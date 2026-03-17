@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Betania+Patmos+In&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="/stylesheets/newcss.css"> 
+    <title>New Product</title>
+</head>
+<body id="desc">
+    <h1>List Your Shoes!</h1>
+    <form action="/products" method="POST" enctype="multipart/form-data">
+        <label for="name">Product Name</label>
+        <input type="text" name="name" placeholder="product name" id="name">
+        <label for="price">Price (Unit)</label>
+        <input type="number" name="price" placeholder="price" id="price">
+        <label for="category">select Category</label>
+        <select name="category" id="category">
+            <option value="sneakers/casuals">sneaker</option>
+            <option value="gym">gym</option>
+            <option value="sport">sport</option>
+            <option value="casual">casual</option>
+        </select>
+<div id="desc">
+<label for="description">Description</label>
+        <textarea name="description" id="description" rows="5" cols="40" placeholder="Describe your Shoes"></textarea>
+</div>
+        <div id="desc">
+        <label for="image">Side view</label>
+        <input type="file" name="image" id="image" accept="image/*">
+</div>
+<div id="desc">
+        <label for="extraImages">Front&Back</label>
+        <input type="file" name="extraImages" id="extraImages" accept="image/*" multiple>
+</div>
+        <button>Submit</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Betania+Patmos+In&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="/stylesheets/editcss.css"> 
+    <title>Edit Product</title>
+</head>
+<body id="desc">
+    <h1>Edit Product</h1>
+    <form action="/products/<%=product._id  %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <label for="name">Product Name</label>
+        <input type="text" name="name" placeholder="product name" id="name" value="<%=product.name%>">
+        <label for="price">Price (Unit)</label>
+        <input type="number" name="price" placeholder="price" id="price" value="<%=product.price%>">
+        <label for="category">select Category</label>
+        <select name="category" id="category">
+            <option value="sneaker">sneaker</option>
+            <option value="gym">gym</option>
+            <option value="sport">sport</option>
+            <option value="casual">casual</option>
+        </select>
+
+   <label for="description">Description</label>
+        <textarea name="description" id="description" rows="5" cols="40"><%= product.description %></textarea>
+
+        <!-- Main image -->
+        <% if (product.image) { %>
+            <p>Current Main Image:</p>
+            <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" width="150">
+            <p>Upload a new main image to replace it:</p>
+        <% } else { %>
+            <p>No main image yet. Upload one:</p>
+        <% } %>
+        <input type="file" name="image" id="image" accept="image/*">
+
+        <!-- Extra images -->
+        <% if (product.extraImages && product.extraImages.length > 0) { %>
+            <p>Current Extra Images:</p>
+            <% for (let img of product.extraImages) { %>
+                <img src="/uploads/<%= img %>" alt="extra" width="120">
+            <% } %>
+            <p>Upload new extra images to replace them (up to 4):</p>
+        <% } else { %>
+            <p>No extra images yet. Upload up to 4:</p>
+        <% } %>
+        <input type="file" name="extraImages" id="extraImages" accept="image/*" multiple>
+
+
+
+        <button>Submit</button>
+    </form>
+    <a href="/products/<%=product._id%>">Cancel</a>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Betania+Patmos+In&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="/stylesheets/showcss.css"> 
+<title><%= product.name  %></title>
+</head>
+<body>
+    <h1 id="desc"><%=product.name  %></h1>
+
+<% if (product.image) { %>
+    <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" width="300">
+<% } else { %>
+    <p>No image uploaded</p>
+<% } %>
+
+    <ul>
+        <li id="desc">Price: $<%=product.price  %></li>
+        <li id="desc">Category: <%=product.category  %></li>
+    </ul>
+
+<% if (product.description) { %>
+        <h2 id="desc">About this fruit</h2>
+        <p id="desc"><%= product.description %></p>
+    <% } %>
+
+    <% if (product.extraImages && product.extraImages.length > 0) { %>
+        <h2 id="desc">Details</h2>
+        <% for (let img of product.extraImages) { %>
+            <img id="pow" src="/uploads/<%= img %>" alt="power image" width="250">
+        <% } %>
+    <% } %>
+
+<div>
+<a href="/products" id="desc">All Products</a>
+<a href="/products/<%=product._id %>/edit" id="desc">Edit Product</a>
+</div>
+<form action="/products/<%=product._id%>?_method=DELETE" method="POST">
+    <button id="desc">Delete</button>
+</form>
+</body>
+</html>

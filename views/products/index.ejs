@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeBuySell</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/homecss.css">
+    <script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 id="desc">Shoe Buy&Sell</h1>
+<%- include('../partials/navbar') %>
+<% if (category !== 'all') { %>
+    <h2>Category: <%= category %></h2>
+<% } %>
+   <div>
+      <%  for(let product of products) { %>
+        <div>
+    
+    <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" width="300">
+        <a id="desc" href="/products/<%=product._id%>"><%= product.name %></a>
+        
+        </div>
+        <% } %>
+    
+   </div>
+   <a href="/products/new" id="desca">Wanna Sell?</a>
+</body>
+</html>
